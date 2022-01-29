@@ -42,6 +42,7 @@ export(bool) var BREAK_ON_MAX_LINES = true # If the text output pauses waiting f
 export(bool) var AUTO_SKIP_WORDS = true # If words that dont fit the line only start to be printed on next line
 export(bool) var LOG_SKIPPED_LINES = true # false = delete every line that is not showing on screen
 export(bool) var SCROLL_SKIPPED_LINES = false # if the user will be able to scroll through the skipped lines; weird stuff can happen if this and BREAK_ON_MAX_LINE/LOG_SKIPPED_LINES
+export(bool) var FORBID_ERASE = true # if the user will be able to erase words
 export(Font) var FONT
 # Text input properties!
 export(bool) var PRINT_INPUT = true # If the input is going to be printed
@@ -284,6 +285,8 @@ func _input(event):
 			else:
 				if(_label.get_lines_skipped() < _label.get_line_count()-_max_lines):
 					_label.set_lines_skipped(_label.get_lines_skipped()+1)
+		elif(FORBID_ERASE and event.scancode == KEY_BACKSPACE):
+			pass
 		elif(_state == 1 and _on_break): # If its on a break
 			if(event.scancode == _break_key):
 				emit_signal("resume_break")
