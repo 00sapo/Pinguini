@@ -11,7 +11,7 @@ position = Vector2( 2, -2 )
 [node name="Console" parent="." instance=ExtResource( 1 )]
 
 [connection signal="awaiting_console_input" from="Level" to="Console" method="_on_level_awaiting_console_input"]
-[connection signal="move_ahead" from="Console" to="Level" method="_on_move_ahead"]
-[connection signal="move_back" from="Console" to="Level" method="_on_move_back"]
+[connection signal="move_down" from="Console" to="Level" method="_on_move_down"]
 [connection signal="move_left" from="Console" to="Level" method="_on_move_left"]
 [connection signal="move_right" from="Console" to="Level" method="_on_move_right"]
+[connection signal="move_up" from="Console" to="Level" method="_on_move_up"]
