@@ -1,10 +1,5 @@
 extends Control
 
-# to be moved in the puzzle level
-# --> platform should trigger this event with an id saved in editor
-# --> same id of "saywhat"
-signal next_story_block(key_id)
-
 onready var text_panel = get_node("./panel/text_interface_engine")
 onready var dialogue_resource = preload("res://assets/camilla.tres")
 
@@ -22,18 +17,19 @@ var COMMANDS = [
 	
 func show_saywhat_node(id: String) -> void:
 	# Given an ID, let the dialogue manager find the next line that we should show
+	text_panel.clear_buffer()
 	var line_intro = ""
 	var line_outro = ""
 	while id != "end":
 		var line = yield(DialogueManager.get_next_dialogue_line(id, dialogue_resource), "completed")
 		if line != null:
-			text_panel.set_state(text_panel.STATE_OUTPUT)
 			if line.character == "Narrator":
 				line_intro = "\n*"
 				line_outro = "*\n\n"
 			else:
 				line_intro = "%-12s" % (line.character + ": ")
 				line_outro = ""
+			text_panel.set_state(text_panel.STATE_OUTPUT)
 			text_panel.buff_text(line_intro + line.dialogue + line_outro + "") 
 #			text_panel.buff_text(line_intro + line.dialogue + line_outro + "", 0.1) 
 			id = line.next_id
@@ -59,14 +55,8 @@ func _ready():
 	
 	# show intro
 	show_saywhat_node("Intro")
-	
-	# connect the incoming signals
-	self.connect("next_story_block", self, "handle_new_story_id")
+
 	pass
-	
-func handle_new_story_id(id):
-	print("received key node: ", id)
-	show_saywhat_node(id)
 
 func check_command(s, command):
 	if command in s.to_lower():
@@ -80,13 +70,14 @@ func _on_node_end():
 func _on_input_enter(s):
 	print("Input Enter ",s)
 	
+	text_panel.add_newline()
 	var found = false
 	for command in COMMANDS:
 		if check_command(s, command[0]):
 			found = true
 			emit_signal(command[1])	
 	if not found:
-		text_panel.buff_text("\nUnknown Command!", 0.01)
+		text_panel.buff_text("Unknown Command!", 0.01)
 		_wait_user_input()
 
 func _on_buff_end():
