@@ -31,4 +31,5 @@ position = Vector2( 500, 200 )
 [node name="BaseObstacle3" parent="BaseObstacles" instance=ExtResource( 1 )]
 position = Vector2( 759.904, 395.037 )
 
+[connection signal="move_ended" from="Player" to="." method="_on_player_move_ended"]
 [connection signal="apply_inversion" from="InversionGlass" to="." method="_on_apply_inversion"]
