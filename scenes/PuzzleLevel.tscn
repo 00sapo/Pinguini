@@ -18,18 +18,23 @@ x_speed = 300
 y_speed = 300
 
 [node name="WinPlatform" parent="." instance=ExtResource( 5 )]
-position = Vector2( 692.964, 567.571 )
+position = Vector2( 1046.3, 1020.9 )
+scale = Vector2( 5, 1 )
 
 [node name="InversionGlass" parent="." instance=ExtResource( 6 )]
-position = Vector2( 429.333, 459.333 )
+position = Vector2( 1126.67, 447.333 )
+scale = Vector2( 1, 5 )
 
 [node name="BaseObstacles" type="Node2D" parent="."]
 
 [node name="BaseObstacle" parent="BaseObstacles" instance=ExtResource( 1 )]
-position = Vector2( 500, 200 )
+position = Vector2( 545.333, 146.667 )
+rotation = 1.5708
+scale = Vector2( 0.2, 1 )
 
 [node name="BaseObstacle3" parent="BaseObstacles" instance=ExtResource( 1 )]
-position = Vector2( 759.904, 395.037 )
+position = Vector2( 341.237, 623.037 )
+scale = Vector2( 0.5, 1 )
 
 [connection signal="move_ended" from="Player" to="." method="_on_player_move_ended"]
 [connection signal="apply_inversion" from="InversionGlass" to="." method="_on_apply_inversion"]

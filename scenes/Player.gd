@@ -2,6 +2,9 @@ extends Node2D
 
 signal move_ended
 
+
+export var bounce_off_factor = 20
+
 export var x_speed = 50
 export var y_speed = 50
 
@@ -12,11 +15,18 @@ var state = "idle"
 
 var initial_position
 
+func reset_character():
+	x_velocity = 0
+	y_velocity = 0
+	state = "idle"
+	$AnimatedSprite.play("default")
+
 func _ready():
 	initial_position = self.position
 	
 func restart():
 	self.position = initial_position
+	reset_character()
 
 func _process(delta):
 	self.position.x += x_velocity * delta
@@ -55,15 +65,9 @@ func move_down():
 
 
 func _on_Area2D_area_entered(area):
-	##### WARNING! THIS IS A BAD WAY OF SOLVING THE PROBLEM! ######
-	self.position.x -= int(x_velocity > 0) * 10 # x_velocity * delta
-	self.position.y -= int(y_velocity > 0) * 10 # y_velocity * delta
-	x_velocity = 0
-	y_velocity = 0
-	state = "idle"
-	$AnimatedSprite.play("default")
+	if x_velocity != 0:
+		self.position.x -= x_velocity/x_velocity * bounce_off_factor
+	if y_velocity != 0:
+		self.position.y -= y_velocity/y_velocity * bounce_off_factor 
+	reset_character()
 	emit_signal("move_ended")
-
-
-func _on_Bounds_out_of_bounds():
-	pass # Replace with function body.
