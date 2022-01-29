@@ -19,27 +19,36 @@ func restart():
 func _process(delta):
 	self.position.x += x_velocity * delta
 	self.position.y += y_velocity * delta
+	
+	
+func apply_movement():
+	state = "movement"
+	$AnimatedSprite.play("walk")
 
 func horizontal_movement(speed):
-	state = "movement"
+	apply_movement()
 	y_velocity = 0
 	x_velocity = speed
 	
 func vertical_movement(speed):
-	state = "movement"
+	apply_movement()
 	x_velocity = 0
 	y_velocity = speed
 
 func move_left():
+	self.rotation_degrees = 90
 	horizontal_movement(-x_speed)
 	
 func move_right():
+	self.rotation_degrees = -90
 	horizontal_movement(x_speed)
 	
 func move_up():
+	self.rotation_degrees = 180
 	vertical_movement(-y_speed)
 	
 func move_down():
+	self.rotation_degrees = 0
 	vertical_movement(y_speed)
 
 
@@ -47,6 +56,7 @@ func _on_Area2D_area_entered(area):
 	x_velocity = 0
 	y_velocity = 0
 	state = "idle"
+	$AnimatedSprite.play("default")
 
 
 func _on_Bounds_out_of_bounds():
