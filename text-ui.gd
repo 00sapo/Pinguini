@@ -32,9 +32,8 @@ func show_saywhat_node(id: String, resource: DialogueResource) -> void:
 		if line != null:
 			test_panel.set_state(test_panel.STATE_OUTPUT)
 			if line.character == "Storia":
-				test_panel.add_newline()
-				line_intro = "*"
-				line_outro = "*"
+				line_intro = "\n*"
+				line_outro = "*\n"
 			else:
 				line_intro = "%-10s" % (line.character + ": ")
 				line_outro = ""
@@ -43,7 +42,7 @@ func show_saywhat_node(id: String, resource: DialogueResource) -> void:
 	wait_user_input()
 
 func wait_user_input():
-	test_panel.buff_text(">>> ")
+	test_panel.buff_text("\n>>> ")
 	test_panel.buff_input()
 
 func _ready():
