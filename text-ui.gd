@@ -6,6 +6,7 @@ extends Control
 signal next_story_block(key_id)
 
 onready var test_panel = get_node("./panel/text_interface_engine")
+onready var dialogue_resource = preload("res://assets/esempio.tres")
 
 signal move_left
 signal move_right
@@ -41,22 +42,20 @@ func _ready():
 	test_panel.reset()
 	test_panel.set_color(Color(1,1,1))
 	
-	#################################################
-	# setup SayWhat
-	var dialogue_resource = preload("res://assets/esempio.tres")
-	print("Loaded dialogue")
-	
+	# show intro
 	show_saywhat_node("A First Node", dialogue_resource)
 	
+	# connect the incoming signals
 	self.connect("next_story_block", self, "handle_new_story_id")
 	pass
 	
-func handle_new_story_id(next_id):
-	print("received key node: ", next_id)
+func handle_new_story_id(id):
+	print("received key node: ", id)
+	show_saywhat_node(id, dialogue_resource)
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_right"):
-		var next_id = "fake_id"
+		var next_id = "Un altro nodo"
 		emit_signal("next_story_block", next_id)
 
 func check_command(s, command):
