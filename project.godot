@@ -22,7 +22,7 @@ _global_script_class_icons={
 
 config/name="Pinguini"
 config/description="Global Game Jam 2022 Pavia"
-run/main_scene="res://TextUI.tscn"
+run/main_scene="res://scenes/PuzzleLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]
