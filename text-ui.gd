@@ -30,16 +30,17 @@ func show_saywhat_node(id: String) -> void:
 			text_panel.set_state(text_panel.STATE_OUTPUT)
 			if line.character == "Storia":
 				line_intro = "\n*"
-				line_outro = "*\n"
+				line_outro = "*\n\n"
 			else:
 				line_intro = "%-10s" % (line.character + ": ")
 				line_outro = ""
 			text_panel.buff_text(line_intro + line.dialogue + line_outro + "\n", 0.05)
 			id = line.next_id
-	wait_user_input()
+	_wait_user_input()
 
-func wait_user_input():
-	text_panel.buff_text("\nGive a hint to Camilla:\n>>> ")
+func _wait_user_input():
+	text_panel.set_state(text_panel.STATE_OUTPUT)
+	text_panel.buff_text("\nGive a hint to Camilla >>> ")
 	text_panel.buff_input()
 
 func _ready():
@@ -88,10 +89,10 @@ func _on_input_enter(s):
 	for command in COMMANDS:
 		if check_command(s, command[0]):
 			found = true
-			emit_signal(command[1])
+			emit_signal(command[1])	
 	if not found:
 		text_panel.buff_text("Unknown Command!\n", 0.01)
-		wait_user_input()
+		_wait_user_input()
 
 func _on_buff_end():
 	print("Buff End")
@@ -113,6 +114,6 @@ func _on_tag_buff(s):
 	print("Tag Buff ",s)
 	pass
 
-
 func _on_level_awaiting_console_input():
-	print("awaiting...")
+	text_panel.clear_buffer()
+	_wait_user_input()
