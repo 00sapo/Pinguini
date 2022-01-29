@@ -45,11 +45,11 @@ func _on_apply_inversion():
 	is_inverted = not is_inverted
 
 
-func _on_move_ahead():
+func _on_move_down():
 	actual_movements_rules["up"].call_func()
 
 
-func _on_move_back():
+func _on_move_up():
 	actual_movements_rules["down"].call_func()
 
 

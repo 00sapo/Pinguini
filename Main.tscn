@@ -6,6 +6,7 @@
 [node name="Main" type="Node"]
 
 [node name="Level" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2, -2 )
 
 [node name="Console" parent="." instance=ExtResource( 1 )]
 

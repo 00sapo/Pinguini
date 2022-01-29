@@ -10,14 +10,14 @@ onready var dialogue_resource = preload("res://assets/esempio.tres")
 
 signal move_left
 signal move_right
-signal move_ahead
-signal move_back
+signal move_down
+signal move_up
 
 var COMMANDS = [
 	["left", "move_left"], 
 	["right", "move_right"],
-	["ahead", "move_ahead"],
-	["back", "move_back"]
+	["down", "move_down"],
+	["up", "move_up"]
 ]
 	
 func show_saywhat_node(id: String) -> void:
