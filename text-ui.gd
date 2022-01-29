@@ -23,12 +23,12 @@ var COMMANDS = [
 	["back", "move_back"]
 ]
 	
-func show_saywhat_node(id: String, resource: DialogueResource) -> void:
+func show_saywhat_node(id: String) -> void:
 	# Given an ID, let the dialogue manager find the next line that we should show
 	var line_intro = ""
 	var line_outro = ""
 	while id != "end":
-		var line = yield(DialogueManager.get_next_dialogue_line(id, resource), "completed")
+		var line = yield(DialogueManager.get_next_dialogue_line(id, dialogue_resource), "completed")
 		if line != null:
 			text_panel.set_state(text_panel.STATE_OUTPUT)
 			if line.character == "Storia":
@@ -42,7 +42,7 @@ func show_saywhat_node(id: String, resource: DialogueResource) -> void:
 	wait_user_input()
 
 func wait_user_input():
-	text_panel.buff_text("\n>>> ")
+	text_panel.buff_text("\nGive a hint to Camilla:\n>>> ")
 	text_panel.buff_input()
 
 func _ready():
@@ -58,7 +58,7 @@ func _ready():
 	text_panel.set_color(Color(0.9,0.9,0.9))
 	
 	# show intro
-	show_saywhat_node("A First Node", dialogue_resource)
+	show_saywhat_node("A First Node")
 	
 	# connect the incoming signals
 	self.connect("next_story_block", self, "handle_new_story_id")
@@ -66,7 +66,7 @@ func _ready():
 	
 func handle_new_story_id(id):
 	print("received key node: ", id)
-	show_saywhat_node(id, dialogue_resource)
+	show_saywhat_node(id)
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_right"):
