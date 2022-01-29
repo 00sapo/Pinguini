@@ -1,6 +1,7 @@
 extends Node2D
 
 signal awaiting_console_input
+signal ask_saywhat_node(id)
 
 var normal_movements_rules
 var inverted_movements_rules
@@ -36,6 +37,7 @@ func on_win():
 func restart():
 	self.actual_movements_rules = inverted_movements_rules
 	is_inverted = true
+	emit_signal("ask_saywhat_node", "Out of bounds 1")
 	
 func _on_apply_inversion():
 	if is_inverted:
@@ -43,7 +45,6 @@ func _on_apply_inversion():
 	else:
 		actual_movements_rules = inverted_movements_rules
 	is_inverted = not is_inverted
-
 
 func _on_move_down():
 	actual_movements_rules["down"].call_func()
@@ -60,6 +61,6 @@ func _on_move_left():
 func _on_move_right():
 	actual_movements_rules["right"].call_func()
 
-
 func _on_player_move_ended():
 	emit_signal("awaiting_console_input")
+
