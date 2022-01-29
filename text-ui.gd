@@ -2,6 +2,11 @@ extends Control
 
 signal node_ended
 
+# to be moved in the puzzle level
+# --> platform should trigger this event with an id saved in editor
+# --> same id of "saywhat"
+signal next_story_block(key_id)
+
 onready var test_panel = get_node("./panel/text_interface_engine")
 
 ## not used anymore
@@ -47,7 +52,17 @@ func _ready():
 	
 	yield(show_node(id, dialogue_resource), "completed")
 	test_panel.buff_input()
+	
+	self.connect("next_story_block", self, "handle_new_story_id")
 	pass
+	
+func handle_new_story_id(next_id):
+	print("received key node: ", next_id)
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_right"):
+		var next_id = "fake_id"
+		emit_signal("next_story_block", next_id)
 
 func check_command(s, command):
 	if command in s.to_lower():
