@@ -20,21 +20,6 @@ func _process(delta):
 	self.position.x += x_velocity * delta
 	self.position.y += y_velocity * delta
 
-func _unhandled_input(event):
-	if state == "idle":
-		handle_movement(event)
-
-	
-func handle_movement(event):
-	if event.is_action_pressed("ui_down"):
-		move_down()
-	if event.is_action_pressed("ui_up"):
-		move_up()
-	if event.is_action_pressed("ui_right"):
-		move_right()
-	if event.is_action_pressed("ui_left"):
-		move_left()
-
 func horizontal_movement(speed):
 	state = "movement"
 	y_velocity = 0
