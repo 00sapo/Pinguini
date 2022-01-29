@@ -86,7 +86,7 @@ func _on_input_enter(s):
 			found = true
 			emit_signal(command[1])	
 	if not found:
-		text_panel.buff_text("Unknown Command!\n", 0.01)
+		text_panel.buff_text("\nUnknown Command!", 0.01)
 		_wait_user_input()
 
 func _on_buff_end():
