@@ -55,6 +55,9 @@ func move_down():
 
 
 func _on_Area2D_area_entered(area):
+	##### WARNING! THIS IS A BAD WAY OF SOLVING THE PROBLEM! ######
+	self.position.x -= int(x_velocity > 0) * 10 # x_velocity * delta
+	self.position.y -= int(y_velocity > 0) * 10 # y_velocity * delta
 	x_velocity = 0
 	y_velocity = 0
 	state = "idle"
