@@ -46,11 +46,11 @@ func _on_apply_inversion():
 
 
 func _on_move_down():
-	actual_movements_rules["up"].call_func()
+	actual_movements_rules["down"].call_func()
 
 
 func _on_move_up():
-	actual_movements_rules["down"].call_func()
+	actual_movements_rules["up"].call_func()
 
 
 func _on_move_left():
