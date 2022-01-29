@@ -65,11 +65,6 @@ func _ready():
 func handle_new_story_id(id):
 	print("received key node: ", id)
 	show_saywhat_node(id)
-	
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_right"):
-		var next_id = "Un altro nodo"
-		emit_signal("next_story_block", next_id)
 
 func check_command(s, command):
 	if command in s.to_lower():
