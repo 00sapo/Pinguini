@@ -5,9 +5,10 @@
 [ext_resource path="res://text-ui.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/fonts/Necto-Mono.woff"
+font_path = "res://assets/fonts/NectoMono-Regular.otf"
 
 [sub_resource type="DynamicFont" id=2]
+size = 14
 font_data = SubResource( 1 )
 
 [node name="Demo" type="Control"]

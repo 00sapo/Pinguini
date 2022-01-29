@@ -386,12 +386,12 @@ func _label_print(t): # Add text to the label
 				_blink_input(true)
 				return
 			
-			if(_state == 1 and BREAK_ON_MAX_LINES and _max_lines_reached == false): # Add a break when maximum lines are reached
-				_delete_last_character()
-				_max_lines_reached = true
-				_buffer[0]["buff_text"] = t + _buffer[0]["buff_text"]
-				buff_break("", true)
-				return t
+#			if(_state == 1 and BREAK_ON_MAX_LINES and _max_lines_reached == false): # Add a break when maximum lines are reached
+#				_delete_last_character()
+#				_max_lines_reached = true
+#				_buffer[0]["buff_text"] = t + _buffer[0]["buff_text"]
+#				buff_break("", true)
+#				return t
 			
 			if(_max_lines_reached): # Reset maximum lines break
 				_max_lines_reached = false

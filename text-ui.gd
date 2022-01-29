@@ -8,9 +8,6 @@ signal next_story_block(key_id)
 onready var text_panel = get_node("./panel/text_interface_engine")
 onready var dialogue_resource = preload("res://assets/esempio.tres")
 
-var font_normal = "res://assets/fonts/Necto-Mono.woff"
-var font_italic = "res://assets/fonts/Messapia-Regular.woff"
-
 signal move_left
 signal move_right
 signal move_ahead
@@ -23,26 +20,27 @@ var COMMANDS = [
 	["back", "move_back"]
 ]
 	
-func show_saywhat_node(id: String, resource: DialogueResource) -> void:
+func show_saywhat_node(id: String) -> void:
 	# Given an ID, let the dialogue manager find the next line that we should show
 	var line_intro = ""
 	var line_outro = ""
 	while id != "end":
-		var line = yield(DialogueManager.get_next_dialogue_line(id, resource), "completed")
+		var line = yield(DialogueManager.get_next_dialogue_line(id, dialogue_resource), "completed")
 		if line != null:
 			text_panel.set_state(text_panel.STATE_OUTPUT)
 			if line.character == "Storia":
 				line_intro = "\n*"
-				line_outro = "*\n"
+				line_outro = "*\n\n"
 			else:
 				line_intro = "%-10s" % (line.character + ": ")
 				line_outro = ""
-			text_panel.buff_text(line_intro + line.dialogue + line_outro + "\n", 0.05)
+			text_panel.buff_text(line_intro + line.dialogue + line_outro + "", 0.05)
 			id = line.next_id
-	wait_user_input()
+	_wait_user_input()
 
-func wait_user_input():
-	text_panel.buff_text("\n>>> ")
+func _wait_user_input():
+	text_panel.set_state(text_panel.STATE_OUTPUT)
+	text_panel.buff_text("\nGive a hint to Camilla >>> ")
 	text_panel.buff_input()
 
 func _ready():
@@ -58,7 +56,7 @@ func _ready():
 	text_panel.set_color(Color(0.9,0.9,0.9))
 	
 	# show intro
-	show_saywhat_node("A First Node", dialogue_resource)
+	show_saywhat_node("A First Node")
 	
 	# connect the incoming signals
 	self.connect("next_story_block", self, "handle_new_story_id")
@@ -66,7 +64,7 @@ func _ready():
 	
 func handle_new_story_id(id):
 	print("received key node: ", id)
-	show_saywhat_node(id, dialogue_resource)
+	show_saywhat_node(id)
 	
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_right"):
@@ -91,10 +89,10 @@ func _on_input_enter(s):
 	for command in COMMANDS:
 		if check_command(s, command[0]):
 			found = true
-			emit_signal(command[1])
+			emit_signal(command[1])	
 	if not found:
-		text_panel.buff_text("Unknown Command!\n", 0.01)
-		wait_user_input()
+		text_panel.buff_text("Unknown Command!", 0.01)
+		_wait_user_input()
 
 func _on_buff_end():
 	print("Buff End")
@@ -115,3 +113,7 @@ func _on_resume_break():
 func _on_tag_buff(s):
 	print("Tag Buff ",s)
 	pass
+
+func _on_level_awaiting_console_input():
+	text_panel.clear_buffer()
+	_wait_user_input()
