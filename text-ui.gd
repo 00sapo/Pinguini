@@ -34,7 +34,7 @@ func show_saywhat_node(id: String) -> void:
 			else:
 				line_intro = "%-10s" % (line.character + ": ")
 				line_outro = ""
-			text_panel.buff_text(line_intro + line.dialogue + line_outro + "\n", 0.05)
+			text_panel.buff_text(line_intro + line.dialogue + line_outro + "", 0.05)
 			id = line.next_id
 	_wait_user_input()
 
@@ -91,7 +91,7 @@ func _on_input_enter(s):
 			found = true
 			emit_signal(command[1])	
 	if not found:
-		text_panel.buff_text("Unknown Command!\n", 0.01)
+		text_panel.buff_text("Unknown Command!", 0.01)
 		_wait_user_input()
 
 func _on_buff_end():

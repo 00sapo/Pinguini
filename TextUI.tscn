@@ -8,7 +8,7 @@
 font_path = "res://assets/fonts/NectoMono-Regular.otf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 18
+size = 14
 font_data = SubResource( 1 )
 
 [node name="Demo" type="Control"]
