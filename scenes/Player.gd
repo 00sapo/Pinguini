@@ -1,5 +1,7 @@
 extends Node2D
 
+signal move_ended
+
 export var x_speed = 50
 export var y_speed = 50
 
@@ -57,6 +59,7 @@ func _on_Area2D_area_entered(area):
 	y_velocity = 0
 	state = "idle"
 	$AnimatedSprite.play("default")
+	emit_signal("move_ended")
 
 
 func _on_Bounds_out_of_bounds():

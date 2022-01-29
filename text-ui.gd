@@ -8,9 +8,6 @@ signal next_story_block(key_id)
 onready var text_panel = get_node("./panel/text_interface_engine")
 onready var dialogue_resource = preload("res://assets/esempio.tres")
 
-var font_normal = "res://assets/fonts/Necto-Mono.woff"
-var font_italic = "res://assets/fonts/Messapia-Regular.woff"
-
 signal move_left
 signal move_right
 signal move_ahead
@@ -115,3 +112,7 @@ func _on_resume_break():
 func _on_tag_buff(s):
 	print("Tag Buff ",s)
 	pass
+
+
+func _on_level_awaiting_console_input():
+	print("awaiting...")
