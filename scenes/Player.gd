@@ -6,6 +6,8 @@ export var y_speed = 50
 var x_velocity = 0
 var y_velocity = 0
 
+var state = "idle"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,21 +23,27 @@ func _process(delta):
 	print(self.position.x)
 
 func _unhandled_input(event):
-	if Input.is_action_pressed("ui_down"):
-		move_down()
-	if Input.is_action_pressed("ui_up"):
-		move_up()
-	if Input.is_action_pressed("ui_right"):
-		move_right()
-	if Input.is_action_pressed("ui_left"):
-		move_left()
+	if state == "idle":
+		handle_movement(event)
+
 	
+func handle_movement(event):
+	if event.is_action_pressed("ui_down"):
+		move_down()
+	if event.is_action_pressed("ui_up"):
+		move_up()
+	if event.is_action_pressed("ui_right"):
+		move_right()
+	if event.is_action_pressed("ui_left"):
+		move_left()
 
 func horizontal_movement(speed):
+	state = "movement"
 	y_velocity = 0
 	x_velocity = speed
 	
 func vertical_movement(speed):
+	state = "movement"
 	x_velocity = 0
 	y_velocity = speed
 
@@ -55,3 +63,4 @@ func move_down():
 func _on_Area2D_area_entered(area):
 	x_velocity = 0
 	y_velocity = 0
+	state = "idle"
