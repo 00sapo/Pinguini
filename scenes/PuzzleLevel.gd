@@ -37,7 +37,8 @@ func on_win():
 func restart():
 	self.actual_movements_rules = inverted_movements_rules
 	is_inverted = true
-	emit_signal("ask_saywhat_node", "Out of bounds 1")
+	var outofbounds_idx = randi() % (3 - 1) + 1
+	emit_signal("ask_saywhat_node", "Out of bounds " + str(outofbounds_idx))
 	
 func _on_apply_inversion():
 	if is_inverted:
@@ -61,6 +62,13 @@ func _on_move_left():
 func _on_move_right():
 	actual_movements_rules["right"].call_func()
 
-func _on_player_move_ended():
-	emit_signal("awaiting_console_input")
-
+func _on_player_move_ended(area_name):
+	if area_name == "ObstacleCollisionArea":
+		var obstacle_idx = randi() % (4 - 1) + 1
+		emit_signal("ask_saywhat_node", "Obstacle " + str(obstacle_idx))
+	elif area_name == "InversionGlassArea":
+		var mirror_idx = randi() % (4 - 1) + 1
+		emit_signal("ask_saywhat_node", "Mirror " + str(mirror_idx))
+	else:
+		print("unknown area type!")
+		emit_signal("awaiting_console_input")
