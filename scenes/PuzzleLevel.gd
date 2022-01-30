@@ -33,6 +33,7 @@ func _ready():
 	
 func on_win():
 	print("level won!")
+	emit_signal("ask_saywhat_node", "Outro")
 		
 func restart():
 	self.actual_movements_rules = inverted_movements_rules

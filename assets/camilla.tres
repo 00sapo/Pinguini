@@ -109,9 +109,16 @@ lines = {
 },
 "123": {
 "character": "Me",
-"next_id": "",
+"next_id": "125",
 "replacements": [  ],
 "text": "You're here now. That's all that matters.",
+"type": "dialogue"
+},
+"125": {
+"character": "Narrator",
+"next_id": "",
+"replacements": [  ],
+"text": "Thank you for having played with our game, we hope you had fun!",
 "type": "dialogue"
 },
 "14": {
