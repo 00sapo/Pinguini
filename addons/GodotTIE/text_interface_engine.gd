@@ -41,7 +41,7 @@ export(bool) var SCROLL_ON_MAX_LINES = true # If this is true, the text buffer u
 export(bool) var BREAK_ON_MAX_LINES = true # If the text output pauses waiting for the user when reaching the maximum number of lines
 export(bool) var AUTO_SKIP_WORDS = true # If words that dont fit the line only start to be printed on next line
 export(bool) var LOG_SKIPPED_LINES = true # false = delete every line that is not showing on screen
-export(bool) var SCROLL_SKIPPED_LINES = false # if the user will be able to scroll through the skipped lines; weird stuff can happen if this and BREAK_ON_MAX_LINE/LOG_SKIPPED_LINES
+export(bool) var SCROLL_SKIPPED_LINES = true # if the user will be able to scroll through the skipped lines; weird stuff can happen if this and BREAK_ON_MAX_LINE/LOG_SKIPPED_LINES
 export(bool) var FORBID_ERASE = true # if the user will be able to erase words
 export(Font) var FONT
 # Text input properties!
