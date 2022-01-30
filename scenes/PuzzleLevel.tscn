@@ -30,7 +30,6 @@ scale = Vector2( 1, 5 )
 [node name="BaseObstacle" parent="BaseObstacles" instance=ExtResource( 1 )]
 position = Vector2( 545.333, 146.667 )
 rotation = 1.5708
-scale = Vector2( 0.2, 1 )
 
 [node name="BaseObstacle3" parent="BaseObstacles" instance=ExtResource( 1 )]
 position = Vector2( 341.237, 623.037 )
