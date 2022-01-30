@@ -2,8 +2,6 @@ extends Control
 
 onready var text_panel = get_node("./panel/text_interface_engine")
 onready var dialogue_resource = preload("res://assets/camilla.tres")
-onready var _show_press_enter = true
-onready var _waiting_for_enter = false
 
 signal move_left
 signal move_right
@@ -33,21 +31,13 @@ func show_saywhat_node(id: String) -> void:
 				line_outro = "\n"
 			text_panel.set_state(text_panel.STATE_OUTPUT)
 			text_panel.buff_text(line_intro + line.dialogue + line_outro) 
-			# text_panel.buff_text(line_intro + line.dialogue + line_outro, 0.1)
+			# text_panel.buff_text(line_intro + line.dialogue + line_outro, 0.1) 
 			id = line.next_id
-			if _show_press_enter:
-				text_panel.buff_text("[press <enter> to continue]\n")
-				_show_press_enter = false
-			
-			_waiting_for_enter = true
-			text_panel.buff_input()
-
 	_wait_user_input()
 
 func _wait_user_input():
 	text_panel.set_state(text_panel.STATE_OUTPUT)
 	text_panel.buff_text("\nGive a hint to Camilla >>> ")
-	_waiting_for_enter = true
 	text_panel.buff_input()
 
 func _ready():
@@ -79,16 +69,13 @@ func _on_node_end():
 
 func _on_input_enter(s):
 	print("Input Enter ",s)
-	if s == "" and _waiting_for_enter:
-		_waiting_for_enter = false
-		return
-		
+	
 	text_panel.add_newline()
 	var found = false
 	for command in COMMANDS:
 		if check_command(s, command[0]):
 			found = true
-			emit_signal(command[1])
+			emit_signal(command[1])	
 	if not found:
 		text_panel.buff_text("Unknown Command!", 0.01)
 		_wait_user_input()
