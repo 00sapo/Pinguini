@@ -61,6 +61,11 @@ func _on_move_left():
 func _on_move_right():
 	actual_movements_rules["right"].call_func()
 
-func _on_player_move_ended():
-	emit_signal("awaiting_console_input")
-
+func _on_player_move_ended(area_name):
+	if area_name == "ObstacleCollisionArea":
+		emit_signal("ask_saywhat_node", "Obstacle 1")
+	elif area_name == "InversionGlassArea":
+		emit_signal("ask_saywhat_node", "Mirror 1")
+	else:
+		print("unknown area type!")
+		emit_signal("awaiting_console_input")

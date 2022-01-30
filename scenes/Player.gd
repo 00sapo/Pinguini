@@ -1,6 +1,6 @@
 extends Node2D
 
-signal move_ended
+signal move_ended(area_name)
 
 
 export var bounce_off_factor = 20
@@ -76,5 +76,5 @@ func _on_Area2D_area_entered(area):
 	
 	for end_area_name in move_ended_areas:
 		if area.name == end_area_name:
-			emit_signal("move_ended")
+			emit_signal("move_ended", area.name)
 
