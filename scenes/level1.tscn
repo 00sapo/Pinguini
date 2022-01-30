@@ -17,7 +17,9 @@ position = Vector2( 576, 41 )
 [node name="Bounds" parent="." instance=ExtResource( 3 )]
 
 [node name="InversionGlass" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1001, 748 )
+position = Vector2( 571.471, 687.387 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
 
 [node name="BaseObstacle" parent="." instance=ExtResource( 1 )]
 position = Vector2( 694, 245 )
