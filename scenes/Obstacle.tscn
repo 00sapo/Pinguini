@@ -19,9 +19,9 @@ extents = Vector2( 314.548, 30.9661 )
 rotation = 1.5708
 frames = SubResource( 1 )
 
-[node name="ObstacleCollisionArea" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleCollisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.749516, -0.273527 )
 shape = SubResource( 2 )
