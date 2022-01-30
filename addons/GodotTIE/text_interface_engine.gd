@@ -285,8 +285,8 @@ func _input(event):
 			else:
 				if(_label.get_lines_skipped() < _label.get_line_count()-_max_lines):
 					_label.set_lines_skipped(_label.get_lines_skipped()+1)
-		elif(FORBID_ERASE and event.scancode == KEY_BACKSPACE):
-			pass
+#		elif(FORBID_ERASE and event.scancode == KEY_BACKSPACE):
+#			pass
 		elif(_state == 1 and _on_break): # If its on a break
 			if(event.scancode == _break_key):
 				emit_signal("resume_break")
@@ -300,7 +300,8 @@ func _input(event):
 			input = input.replace("\n","")
 
 			if(event.scancode == KEY_BACKSPACE): # Delete last character
-				_delete_last_character(true)
+				if input.length() > 0:
+					_delete_last_character(true)
 			elif(event.scancode == KEY_ENTER): # Finish input
 				emit_signal("input_enter", input)
 				if(!PRINT_INPUT): # Delete input
