@@ -26,7 +26,7 @@ position = Vector2( 2, -2 )
 [node name="Console" parent="." instance=ExtResource( 1 )]
 
 [connection signal="ask_saywhat_node" from="Level" to="Console" method="_on_level_ask_saywhat_node"]
-[connection signal="awaiting_console_input" from="Level" to="Console" method="_on_level_awaiting_console_input" binds= [ "" ]]
+[connection signal="awaiting_console_input" from="Level" to="Console" method="_on_level_awaiting_console_input"]
 [connection signal="move_down" from="Console" to="Level" method="_on_move_down"]
 [connection signal="move_left" from="Console" to="Level" method="_on_move_left"]
 [connection signal="move_right" from="Console" to="Level" method="_on_move_right"]
