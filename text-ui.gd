@@ -6,18 +6,18 @@ extends Control
 signal next_story_block(key_id)
 
 onready var text_panel = get_node("./panel/text_interface_engine")
-onready var dialogue_resource = preload("res://assets/esempio.tres")
+onready var dialogue_resource = preload("res://assets/camilla.tres")
 
 signal move_left
 signal move_right
-signal move_ahead
-signal move_back
+signal move_down
+signal move_up
 
 var COMMANDS = [
 	["left", "move_left"], 
 	["right", "move_right"],
-	["ahead", "move_ahead"],
-	["back", "move_back"]
+	["down", "move_down"],
+	["up", "move_up"]
 ]
 	
 func show_saywhat_node(id: String) -> void:
@@ -28,13 +28,14 @@ func show_saywhat_node(id: String) -> void:
 		var line = yield(DialogueManager.get_next_dialogue_line(id, dialogue_resource), "completed")
 		if line != null:
 			text_panel.set_state(text_panel.STATE_OUTPUT)
-			if line.character == "Storia":
+			if line.character == "Narrator":
 				line_intro = "\n*"
 				line_outro = "*\n\n"
 			else:
-				line_intro = "%-10s" % (line.character + ": ")
+				line_intro = "%-12s" % (line.character + ": ")
 				line_outro = ""
-			text_panel.buff_text(line_intro + line.dialogue + line_outro + "", 0.05)
+			text_panel.buff_text(line_intro + line.dialogue + line_outro + "") 
+#			text_panel.buff_text(line_intro + line.dialogue + line_outro + "", 0.1) 
 			id = line.next_id
 	_wait_user_input()
 
@@ -45,6 +46,7 @@ func _wait_user_input():
 
 func _ready():
 	# setupp GodotTie
+	
 	text_panel.connect("input_enter", self, "_on_input_enter")
 	text_panel.connect("buff_end", self, "_on_buff_end")
 	text_panel.connect("state_change", self, "_on_state_change")
@@ -56,7 +58,7 @@ func _ready():
 	text_panel.set_color(Color(0.9,0.9,0.9))
 	
 	# show intro
-	show_saywhat_node("A First Node")
+	show_saywhat_node("Intro")
 	
 	# connect the incoming signals
 	self.connect("next_story_block", self, "handle_new_story_id")
@@ -65,11 +67,6 @@ func _ready():
 func handle_new_story_id(id):
 	print("received key node: ", id)
 	show_saywhat_node(id)
-	
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_right"):
-		var next_id = "Un altro nodo"
-		emit_signal("next_story_block", next_id)
 
 func check_command(s, command):
 	if command in s.to_lower():
@@ -83,15 +80,13 @@ func _on_node_end():
 func _on_input_enter(s):
 	print("Input Enter ",s)
 	
-	text_panel.add_newline()
-	text_panel.add_newline()
 	var found = false
 	for command in COMMANDS:
 		if check_command(s, command[0]):
 			found = true
 			emit_signal(command[1])	
 	if not found:
-		text_panel.buff_text("Unknown Command!", 0.01)
+		text_panel.buff_text("Unknown Command!\n", 0.01)
 		_wait_user_input()
 
 func _on_buff_end():
@@ -115,5 +110,8 @@ func _on_tag_buff(s):
 	pass
 
 func _on_level_awaiting_console_input():
-	text_panel.clear_buffer()
 	_wait_user_input()
+	
+func _on_level_ask_saywhat_node(id):
+	print("asking new node: " + id)
+	show_saywhat_node(id)

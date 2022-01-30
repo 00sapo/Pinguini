@@ -1,0 +1,137 @@
+# Intro
+
+Me: Hey Camilla, I'm waiting at our usual spot 
+Me: Cami, you're not standing me up again, are you? 
+Me: Cami, are you alright?
+
+Narrator: It's not the first time Camilla doesn't show up. But this time, I have a weird feeling about it. 
+Narrator: She hasn't texted. She isn't even picking up her phone.
+
+Me: Cami, I'm on my way to your place
+
+Narrator: I'm at Camilla's door. I turn the handle. It opens with a creak.
+Narrator: Nobody's home. The hallway is dark, quiet and empty, with only a mirror at one end. 
+Narrator: I approach the mirror. It glows faintly in the dark.   
+Narrator: Beyond my reflection on its surface, there is darkness, with a light at the end.
+Narrator: The mirror is not glowing – it's Camilla. She's inside the mirror. 
+Narrator: Her light refracts through a myriad of glass walls. Or are they mirrors? What kind of mirror is this? 
+Narrator: I knock on it, but I'm afraid it'll break. 
+Narrator: The glow flickers in the dark. Camilla raises her head. 
+Me: CAMILLA! Can you hear me?
+Narrator: She can't hear me. How did she end up inside the mirror?
+Narrator: How do I get her out of there?
+Me: Camilla! 
+Narrator: Can I get her to come closer? 
+Narrator: I fog the mirror with my breath. I trace letters into the fog with my finger.
+Me: You read?
+Narrator: Camilla nods. I've found a way to communicate with her.
+Narrator: Do I know the labyrinth of Camilla's mind enough to help her out of it?
+Narrator: I fog the mirror, and I write.  
+Me: Down
+Narrator: Camilla takes a step towards me. 
+// I comandi sono: down, up, left, right in questo testo. Puoi sostituirli con ciò che preferisci. 
+
+
+// Ci sono **due tipi** di risposte agli ostacoli, ai mirror, e ai out of bounds: 
+//  (A) quelli prima del Checkpoint 2 (detti dal Narrator) 
+//  (B) quelli dopo il Checkpoint 2 (detti da Camilla). 
+
+// PRIMA DEL CHECKPOINT 2
+
+	// (A) Se viene dato un comando non eseguibile (tipo: forward davanti a un ostacolo che non lo consente) 
+# Obstacle 1 
+Narrator: It looks like Camilla can't go that way. 
+
+# Obstacle 2 
+Narrator: I can't seem to get it right. 
+
+# Obstacle 3 
+Narrator: Oh, I thought my directions were clear...
+
+	// (A) Dopo un comando dato in presenza di uno specchio 
+# Mirror 1 
+Narrator: It's like we're in nested mirrors. 
+
+# Mirror 2 
+Narrator: Another mirror.  
+
+# Mirror 3
+Narrator: Whenever we're near a mirror, everything turns upside down. 
+
+	// (A) Out of bounds 
+# Out of bounds 1
+Narrator: Nooo! Camilla! 
+
+# Out of bounds 2
+Narrator: Oh no! Camilla, I'll get you out of here! 
+
+// TESTO DEI CHECKPOINT
+
+# Checkpoint 1 
+Narrator: Camilla is tired. Her faint glow has become even weaker.
+Narrator: I fog the mirror, and I write. 
+Me: Tired? 
+Narrator: Camilla nods. We rest a little. 
+Narrator: I fog the mirror, and I write. 
+Me: How r u in there?
+Narrator: Camilla shakes her head. She doesn't know.
+Narrator: When she stood me up this morning, for a moment I thought I'd just go home.
+Narrator: Since the second lockdown, she's been closing herself off. She doesn't hang out as much.
+Narrator: She spends a lot of time inside her own head. I miss her. 
+Narrator: In front of this mirror, my reflection overlaps with her face. Is she really that near? Or is it all just a game of mirrors? 
+Narrator: Enough resting. I'm getting her out of there. 
+
+# Checkpoint 2
+Camilla: Please, get me out of here... 
+Narrator: Do I hear Camilla's voice? She must be so close!
+Me: CAMILLA! CAN YOU HEAR ME? 
+Camilla: I... I can! I can hear you! 
+Me: We'll get you out of there! 
+Camilla: Where do I go now? 
+
+// DOPO IL CHECKPOINT 2
+
+// (B) Se viene dato un comando non eseguibile 
+# Obstacle 4 
+Camilla: I can't go that way. 
+
+// (B) Dopo un comando dato in presenza di uno specchio 
+# Mirror 4
+Camilla: Another mirror. 
+
+// (B) Out of bounds
+# Out of bounds 3
+Me: No! You'll be out soon, I promise. 
+
+# Out of bounds 4
+Me: Let's try again. 
+
+# Outro 
+Narrator: The glow is so strong now! She must be very close! 
+Camilla: I can see you now, through the mirror! 
+Me: Come towards me! 
+Narrator: A blinding light shines through the looking glass. My reflection melts with Camilla's as her fingers reach through the mirror. 
+Camilla: Take my hand! 
+Narrator: I grab her hand and pull her towards me. The blinding light fills the room as we both fall to the ground. 
+Me: Camilla! Are you ok?
+Camilla: I... I think I am! I thought I was never going to come back! 
+Camilla: Thank you for coming for me. I spent so much time in self-reflection, I must have gotten stuck in myself. 
+Camilla: I'm so sorry I stood you up. 
+Me: You're here now. That's all that matters. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
