@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://addons/saywhat_godot/dialogue_resource.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-titles = {"A First Node":"2","Un altro nodo":"8"}
-lines = {"2":{"character":"Camilla","next_id":"3","replacements":[],"text":"sto parlando!","type":"dialogue"},"3":{"character":"Storia","next_id":"4","replacements":[],"text":"Questa è una riga narrativa","type":"dialogue"},"4":{"character":"Giocatore","next_id":"end","replacements":[],"text":"Oddio Questo è il giocatore che parla... parla!?!? Lasciamogli dire qualcosa","type":"dialogue"},"8":{"character":"Camilla","next_id":"9","replacements":[],"text":" che palle questo esempio","type":"dialogue"},"9":{"character":"Giocatore","next_id":"","replacements":[],"text":"Oh no, sto ancora parlando, lasciatemi parlare!","type":"dialogue"}}
