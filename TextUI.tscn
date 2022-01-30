@@ -6,7 +6,7 @@
 [ext_resource path="res://Animazioni/SfondoPsecchio.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Background.gd" type="Script" id=5]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
@@ -14,12 +14,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/NectoMono-Regular.otf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 35
-font_data = SubResource( 1 )
+font_data = SubResource( 2 )
 
 [node name="Demo" type="Control"]
 anchor_right = 1.0
@@ -34,7 +34,7 @@ __meta__ = {
 [node name="panel" type="AnimatedSprite" parent="."]
 position = Vector2( 1638, 540 )
 scale = Vector2( 0.477778, 0.529167 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "Animation"
 script = ExtResource( 5 )
 
@@ -45,9 +45,10 @@ margin_left = -454.0
 margin_top = -869.0
 margin_right = -613.0
 margin_bottom = -1081.0
+rect_clip_content = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_icon": ExtResource( 2 )
 }
-FONT = SubResource( 2 )
+FONT = SubResource( 3 )
