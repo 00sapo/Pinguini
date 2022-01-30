@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Walk_png-12.png-2140333b974308d652fc379275f98cc6.stex"
+path="res://.import/Specchio-9.png-8818d7a54694093c44d4efd97c51ae18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animazioni/Walk/Walk_png-12.png"
-dest_files=[ "res://.import/Walk_png-12.png-2140333b974308d652fc379275f98cc6.stex" ]
+source_file="res://Animazioni/Specchio/Specchio-9.png"
+dest_files=[ "res://.import/Specchio-9.png-8818d7a54694093c44d4efd97c51ae18.stex" ]
 
 [params]
 
