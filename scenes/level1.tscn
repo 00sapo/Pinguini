@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Bounds.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/InversionGlass.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/WinPlatform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Animazioni/Asset grafici/Angolo_tipo_A.png" type="Texture" id=6]
+[ext_resource path="res://scenes/level-blocks/AngleA.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/PuzzleLevel.gd" type="Script" id=7]
 
 [node name="Livello" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 576, 41 )
@@ -33,7 +35,7 @@ rotation = 1.5708
 scale = Vector2( 0.6, 0.8 )
 
 [node name="BaseObstacle2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 908, 29 )
+position = Vector2( 863.455, 27.283 )
 scale = Vector2( 0.6, 0.8 )
 
 [node name="BaseObstacle6" parent="." instance=ExtResource( 1 )]
@@ -66,9 +68,9 @@ position = Vector2( 376, 389 )
 scale = Vector2( 0.4, 0.8 )
 
 [node name="BaseObstacle3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1127, 339 )
+position = Vector2( 1127.53, 361.224 )
 rotation = 1.5708
-scale = Vector2( 0.9, 0.8 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="BaseObstacle18" parent="." instance=ExtResource( 1 )]
 position = Vector2( 642, 1059 )
@@ -100,11 +102,12 @@ position = Vector2( 217, 389 )
 rotation = 1.5708
 scale = Vector2( 0.6, 0.8 )
 
+[node name="AngleA" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1102.21, 55.9357 )
+rotation = 4.71239
+scale = Vector2( 0.8, 0.8 )
+
 [node name="WinPlatform" parent="." instance=ExtResource( 5 )]
 position = Vector2( 724, 1047 )
 
-[node name="AngoloTipoA" type="Sprite" parent="."]
-position = Vector2( 1098.33, 59.0023 )
-rotation = -1.5708
-scale = Vector2( 0.808312, 0.923935 )
-texture = ExtResource( 6 )
+[connection signal="move_ended" from="Player" to="." method="_on_player_move_ended"]

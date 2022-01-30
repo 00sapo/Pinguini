@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TextUI.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/PuzzleLevel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Animazioni/Asset grafici/Pavimento tB.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Background.gd" type="Script" id=4]
+[ext_resource path="res://scenes/level1.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,14 +20,13 @@ position = Vector2( 957.732, 534.425 )
 frames = SubResource( 1 )
 script = ExtResource( 4 )
 
-[node name="Level" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2, -2 )
+[node name="Livello" parent="." instance=ExtResource( 5 )]
 
 [node name="Console" parent="." instance=ExtResource( 1 )]
 
-[connection signal="ask_saywhat_node" from="Level" to="Console" method="_on_level_ask_saywhat_node"]
-[connection signal="awaiting_console_input" from="Level" to="Console" method="_on_level_awaiting_console_input"]
-[connection signal="move_down" from="Console" to="Level" method="_on_move_down"]
-[connection signal="move_left" from="Console" to="Level" method="_on_move_left"]
-[connection signal="move_right" from="Console" to="Level" method="_on_move_right"]
-[connection signal="move_up" from="Console" to="Level" method="_on_move_up"]
+[connection signal="ask_saywhat_node" from="Livello" to="Console" method="_on_level_ask_saywhat_node"]
+[connection signal="awaiting_console_input" from="Livello" to="Console" method="_on_level_awaiting_console_input"]
+[connection signal="move_down" from="Console" to="Livello" method="_on_move_down"]
+[connection signal="move_left" from="Console" to="Livello" method="_on_move_left"]
+[connection signal="move_right" from="Console" to="Livello" method="_on_move_right"]
+[connection signal="move_up" from="Console" to="Livello" method="_on_move_up"]
