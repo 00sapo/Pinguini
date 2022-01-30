@@ -12,7 +12,7 @@ func _ready():
 	$LeftBound.position = Vector2(0, 0)
 	$LeftBound.init(vertical_size)
 	
-	$RightBound.position = Vector2(screen_size.x, 0)
+	$RightBound.position = Vector2(0.65 * screen_size.x, 0)
 	$RightBound.init(vertical_size)
 	
 	$TopBound.position = Vector2(0, 0)
