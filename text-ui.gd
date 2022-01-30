@@ -32,8 +32,8 @@ func show_saywhat_node(id: String) -> void:
 				line_intro = "%-8s" % (line.character + ": ")
 				line_outro = "\n"
 			text_panel.set_state(text_panel.STATE_OUTPUT)
-			# text_panel.buff_text(line_intro + line.dialogue + line_outro) 
-			text_panel.buff_text(line_intro + line.dialogue + line_outro, 0.1)
+			text_panel.buff_text(line_intro + line.dialogue + line_outro) 
+			# text_panel.buff_text(line_intro + line.dialogue + line_outro, 0.1)
 			id = line.next_id
 			if _show_press_enter:
 				text_panel.buff_text("[press <enter> to continue]\n")
