@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -7,17 +7,18 @@
 [ext_resource path="res://scenes/WinPlatform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/level-blocks/AngleA.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/PuzzleLevel.gd" type="Script" id=7]
+[ext_resource path="res://scenes/level-blocks/EndWall.tscn" type="PackedScene" id=8]
 
 [node name="Livello" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 576, 41 )
+position = Vector2( 588.705, 92.921 )
 
 [node name="Bounds" parent="." instance=ExtResource( 3 )]
 
 [node name="InversionGlass" parent="." instance=ExtResource( 4 )]
-position = Vector2( 571.471, 687.387 )
+position = Vector2( 198.814, 747.252 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 
@@ -32,7 +33,7 @@ rotation = 1.5708
 scale = Vector2( 0.6, 0.8 )
 
 [node name="BaseObstacle7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 26, 254 )
+position = Vector2( 90.111, 248.343 )
 rotation = 1.5708
 scale = Vector2( 0.6, 0.8 )
 
@@ -45,17 +46,8 @@ position = Vector2( 261, 30 )
 scale = Vector2( 0.6, 0.8 )
 
 [node name="BaseObstacle10" parent="." instance=ExtResource( 1 )]
-position = Vector2( 459, 746 )
+position = Vector2( 517.368, 748.993 )
 scale = Vector2( 0.5, 0.8 )
-
-[node name="BaseObstacle16" parent="." instance=ExtResource( 1 )]
-position = Vector2( 90, 1058 )
-scale = Vector2( 0.5, 0.8 )
-
-[node name="BaseObstacle11" parent="." instance=ExtResource( 1 )]
-position = Vector2( 275, 899 )
-rotation = 1.5708
-scale = Vector2( 0.4, 0.8 )
 
 [node name="BaseObstacle5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 972, 809 )
@@ -69,11 +61,6 @@ scale = Vector2( 0.4, 0.8 )
 position = Vector2( 376, 389 )
 scale = Vector2( 0.4, 0.8 )
 
-[node name="BaseObstacle3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1127.53, 361.224 )
-rotation = 1.5708
-scale = Vector2( 0.8, 0.8 )
-
 [node name="BaseObstacle18" parent="." instance=ExtResource( 1 )]
 position = Vector2( 642, 1059 )
 rotation = 1.5708
@@ -83,16 +70,6 @@ scale = Vector2( 0.9, 0.8 )
 position = Vector2( 1131, 1125 )
 rotation = 1.5708
 scale = Vector2( 0.9, 0.8 )
-
-[node name="BaseObstacle4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 894, 398 )
-rotation = 1.5708
-scale = Vector2( 0.7, 0.8 )
-
-[node name="BaseObstacle17" parent="." instance=ExtResource( 1 )]
-position = Vector2( 24, 815 )
-rotation = 1.5708
-scale = Vector2( 0.7, 0.8 )
 
 [node name="BaseObstacle12" parent="." instance=ExtResource( 1 )]
 position = Vector2( 217, 389 )
@@ -112,4 +89,14 @@ scale = Vector2( 0.8, 0.8 )
 [node name="WinPlatform" parent="." instance=ExtResource( 5 )]
 position = Vector2( 724, 1047 )
 
+[node name="InversionGlass2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 883.003, 249.935 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="EndWall" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1009.96, 320.316 )
+scale = Vector2( 0.6, 0.6 )
+
 [connection signal="move_ended" from="Player" to="." method="_on_player_move_ended"]
+[connection signal="apply_inversion" from="InversionGlass" to="." method="_on_apply_inversion"]
+[connection signal="apply_inversion" from="InversionGlass2" to="." method="_on_apply_inversion"]
