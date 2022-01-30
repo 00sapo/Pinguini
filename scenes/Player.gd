@@ -63,11 +63,18 @@ func move_down():
 	self.rotation_degrees = 0
 	vertical_movement(y_speed)
 
+var move_ended_areas = ["ObstacleCollisionArea", "InversionGlassArea"]
 
 func _on_Area2D_area_entered(area):
+	
+
 	if x_velocity != 0:
-		self.position.x -= x_velocity/x_velocity * bounce_off_factor
+		self.position.x -= x_velocity/abs(x_velocity) * bounce_off_factor
 	if y_velocity != 0:
-		self.position.y -= y_velocity/y_velocity * bounce_off_factor 
+		self.position.y -= y_velocity/abs(y_velocity) * bounce_off_factor 
 	reset_character()
-	emit_signal("move_ended")
+	
+	for end_area_name in move_ended_areas:
+		if area.name == end_area_name:
+			emit_signal("move_ended")
+
