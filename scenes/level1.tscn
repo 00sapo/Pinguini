@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Bounds.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/InversionGlass.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/WinPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Animazioni/Asset grafici/Angolo_tipo_A.png" type="Texture" id=6]
 
 [node name="Livello" type="Node2D"]
 
@@ -101,3 +102,9 @@ scale = Vector2( 0.6, 0.8 )
 
 [node name="WinPlatform" parent="." instance=ExtResource( 5 )]
 position = Vector2( 724, 1047 )
+
+[node name="AngoloTipoA" type="Sprite" parent="."]
+position = Vector2( 1098.33, 59.0023 )
+rotation = -1.5708
+scale = Vector2( 0.808312, 0.923935 )
+texture = ExtResource( 6 )
